@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .success { color: green; }
+        .error { color: red; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>VibeDoge 导航功能测试</h1>
+    
+    <div class="test-section">
+        <h2>测试说明</h2>
+        <p>请按照以下步骤测试导航功能：</p>
+        <ol>
+            <li>打开浏览器开发者工具（F12）</li>
+            <li>切换到 Console 标签页</li>
+            <li>访问 <a href="http://localhost:5173" target="_blank">http://localhost:5173</a></li>
+            <li>点击导航栏中的各个按钮</li>
+            <li>观察是否有控制台日志输出</li>
+            <li>检查页面URL是否发生变化</li>
+            <li>检查页面内容是否正确切换</li>
+        </ol>
+    </div>
+    
+    <div class="test-section">
+        <h2>预期行为</h2>
+        <ul>
+            <li>点击导航按钮时，控制台应该输出类似 "Navigation clicked: 首页 -> /" 的日志</li>
+            <li>浏览器地址栏应该更新为对应的路径</li>
+            <li>页面内容应该切换到对应的页面组件</li>
+            <li>当前页面的导航按钮应该有高亮样式</li>
+        </ul>
+    </div>
+    
+    <div class="test-section">
+        <h2>可能的问题</h2>
+        <ul>
+            <li>如果点击没有反应，可能是CSS样式问题导致按钮不可点击</li>
+            <li>如果没有控制台日志，可能是事件处理器没有正确绑定</li>
+            <li>如果URL不变化，可能是React Router配置问题</li>
+            <li>如果页面不切换，可能是路由组件没有正确渲染</li>
+        </ul>
+    </div>
+    
+    <div class="test-section">
+        <h2>快速测试链接</h2>
+        <p>直接测试各个页面路径：</p>
+        <button onclick="window.open('http://localhost:5173/', '_blank')">首页 (/)</button>
+        <button onclick="window.open('http://localhost:5173/about', '_blank')">关于我们 (/about)</button>
+        <button onclick="window.open('http://localhost:5173/community', '_blank')">社区广场 (/community)</button>
+        <button onclick="window.open('http://localhost:5173/lottery/detail', '_blank')">抽奖详情 (/lottery/detail)</button>
+        <button onclick="window.open('http://localhost:5173/global-stats', '_blank')">全球统计 (/global-stats)</button>
+    </div>
+    
+    <script>
+        console.log('Navigation test page loaded');
+        
+        // 测试函数
+        function testNavigation() {
+            console.log('Testing navigation functionality...');
+            
+            // 检查是否能访问各个路径
+            const paths = ['/', '/about', '/community', '/lottery/detail', '/global-stats'];
+            
+            paths.forEach(path => {
+                fetch(`http://localhost:5173${path}`)
+                    .then(response => {
+                        if (response.ok) {
+                            console.log(`✅ Path ${path} is accessible`);
+                        } else {
+                            console.log(`❌ Path ${path} returned status ${response.status}`);
+                        }
+                    })
+                    .catch(error => {
+                        console.log(`❌ Error accessing ${path}:`, error);
+                    });
+            });
+        }
+        
+        // 自动运行测试
+        setTimeout(testNavigation, 1000);
+    </script>
+</body>
+</html>
