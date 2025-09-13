@@ -6,6 +6,8 @@ export interface MCPUser {
   createdAt: string;
   lastActiveAt: string;
   sessionToken: string;
+  remainingDraws: number; // 剩余抽奖次数
+  isRegistered: boolean; // 是否已在数据库注册
 }
 
 class MCPService {
@@ -26,7 +28,9 @@ class MCPService {
       id: this.generateUserId(),
       createdAt: now,
       lastActiveAt: now,
-      sessionToken: this.generateSessionToken()
+      sessionToken: this.generateSessionToken(),
+      remainingDraws: 0, // 初始为0，需要注册后获得抽奖次数
+      isRegistered: false
     };
 
     this.currentUser = user;
@@ -84,6 +88,35 @@ class MCPService {
   // 获取当前用户
   getCurrentUser(): MCPUser | null {
     return this.currentUser;
+  }
+
+  // 用户注册成功，发放抽奖次数
+  registerSuccess(draws: number = 3): void {
+    if (this.currentUser) {
+      this.currentUser.remainingDraws = draws;
+      this.currentUser.isRegistered = true;
+      this.saveToStorage(this.currentUser);
+    }
+  }
+
+  // 使用一次抽奖机会
+  useDraw(): boolean {
+    if (this.currentUser && this.currentUser.remainingDraws > 0) {
+      this.currentUser.remainingDraws--;
+      this.saveToStorage(this.currentUser);
+      return true;
+    }
+    return false;
+  }
+
+  // 获取剩余抽奖次数
+  getRemainingDraws(): number {
+    return this.currentUser?.remainingDraws || 0;
+  }
+
+  // 检查是否已注册
+  isUserRegistered(): boolean {
+    return this.currentUser?.isRegistered || false;
   }
 }
 

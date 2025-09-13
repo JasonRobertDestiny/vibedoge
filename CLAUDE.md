@@ -13,9 +13,10 @@ This is a **VibeDoge Exchange Demo** - a modern React-based application showcasi
 - **Styling**: Tailwind CSS
 - **HTTP Client**: Built-in fetch API
 - **Build Tool**: Vite
-- **Package Manager**: pnpm
+- **Package Manager**: npm/pnpm
 - **Backend**: Express.js (Node.js)
-- **Database**: Mock data (no persistent database)
+- **Database**: Supabase (PostgreSQL) - Real persistent database
+- **Authentication**: MCP (Model Context Protocol) user ID generation
 
 ### Project Architecture
 
