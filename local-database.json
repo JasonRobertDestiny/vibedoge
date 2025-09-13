@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": "9df8c1e6-2494-4dc0-908e-25f6d9affbcb",
+      "mcp_user_id": "test_user_123",
+      "username": "TestUser",
+      "email": "test@example.com",
+      "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=test_user_123",
+      "created_at": "2025-09-13T03:08:56.288Z",
+      "updated_at": "2025-09-13T03:08:56.288Z"
+    }
+  ],
+  "lottery_records": [
+    {
+      "id": "0013c92b-2ce7-4fe1-852b-b3f65e42ea03",
+      "user_id": "9df8c1e6-2494-4dc0-908e-25f6d9affbcb",
+      "lottery_id": "e13ca15b-bde4-4b03-ace9-e9ac47fccbdf",
+      "status": "active",
+      "prize_name": null,
+      "prize_value": null,
+      "prize_rarity": null,
+      "created_at": "2025-09-13T03:08:56.290Z",
+      "updated_at": "2025-09-13T03:08:56.290Z"
+    }
+  ],
+  "metadata": {
+    "created_at": "2025-09-13T03:08:56.274Z",
+    "version": "1.0.0"
+  }
+}

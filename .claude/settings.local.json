@@ -1,7 +1,26 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:supabase.com)"
+      "WebFetch(domain:supabase.com)",
+      "Bash(pnpm add:*)",
+      "Bash(npm install:*)",
+      "Bash(node:*)",
+      "Bash(curl:*)",
+      "Bash(pkill:*)",
+      "Bash(kill:*)",
+      "Bash(timeout:*)",
+      "Bash(pnpm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(npm cache clean:*)",
+      "Bash(npm run lint)",
+      "Bash(npx tsc:*)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh repo view:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []
